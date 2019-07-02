@@ -32,10 +32,9 @@ var TreeviewItem = /** @class */ (function () {
                 if (_this.disabled === true && autoCorrectDisabled) {
                     child.disabled = true;
                 }
-                return new TreeviewItem(child);
+                return new TreeviewItem(child, autoCorrectChecked, autoCorrectDisabled);
             });
         }
-        this.internalChecked = this.checked;
         if (autoCorrectChecked) {
             this.correctChecked();
         }
