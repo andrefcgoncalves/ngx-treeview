@@ -23,7 +23,7 @@ export class TreeviewItem {
     text: string;
     value: any;
 
-    constructor(item: TreeItem, autoCorrectChecked = false) {
+    constructor(item: TreeItem, autoCorrectChecked = false, autoCorrectDisabled = true) {
         if (isNil(item)) {
             throw new Error('Item must be defined');
         }
@@ -44,7 +44,7 @@ export class TreeviewItem {
         }
         if (!isNil(item.children) && item.children.length > 0) {
             this.children = item.children.map(child => {
-                if (this.disabled === true) {
+                if (this.disabled === true && autoCorrectDisabled) {
                     child.disabled = true;
                 }
 
