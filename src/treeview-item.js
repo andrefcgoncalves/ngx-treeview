@@ -35,6 +35,7 @@ var TreeviewItem = /** @class */ (function () {
                 return new TreeviewItem(child);
             });
         }
+        this.internalChecked = this.checked;
         if (autoCorrectChecked) {
             this.correctChecked();
         }
