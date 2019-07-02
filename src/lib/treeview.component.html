@@ -1,6 +1,6 @@
 <ng-template #defaultItemTemplate let-item="item" let-onCollapseExpand="onCollapseExpand" let-onCheckedChange="onCheckedChange">
   <div class="form-inline row-item">
-    <i *ngIf="item.children" (click)="onCollapseExpand()" aria-hidden="true" class="material-icons">
+    <i (click)="onCollapseExpand()" aria-hidden="true" class="material-icons" [class.invisible]="!item.children">
       {{item.collapsed ? 'chevron_right': 'expand_more' }}
     </i>
     <div class="custom-control custom-checkbox">
@@ -30,11 +30,11 @@
             {{i18n.getAllCheckboxText()}}
           </label>
         </div>
-        <label *ngIf="config.hasCollapseExpand" class="pull-right custom-control-label" (click)="onCollapseExpand()">
+        <!-- <label *ngIf="config.hasCollapseExpand" class="pull-right custom-control-label" (click)="onCollapseExpand()">
           <i [title]="i18n.getTooltipCollapseExpandText(item.collapsed)" aria-hidden="true" class="material-icons">
             {{item.collapsed ? 'chevron_right': 'expand_more' }}
           </i>
-        </label>
+        </label> -->
       </div>
     </div>
     <div *ngIf="config.hasDivider" class="dropdown-divider"></div>
