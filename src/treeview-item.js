@@ -34,7 +34,7 @@ var TreeviewItem = /** @class */ (function () {
                 if (_this.disabled === true && autoCorrectDisabled) {
                     child.disabled = true;
                 }
-                return new TreeviewItem(child, autoCorrectChecked, autoCorrectDisabled);
+                return new TreeviewItem(child, autoCorrectChecked, autoCorrectDisabled, decoupleChildFromParent);
             });
         }
         if (autoCorrectChecked) {
