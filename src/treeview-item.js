@@ -1,13 +1,15 @@
 import { isBoolean, isNil, isString } from 'lodash';
 import { TreeviewHelper } from './treeview-helper';
 var TreeviewItem = /** @class */ (function () {
-    function TreeviewItem(item, autoCorrectChecked, autoCorrectDisabled) {
+    function TreeviewItem(item, autoCorrectChecked, autoCorrectDisabled, decoupleChildFromParent) {
         if (autoCorrectChecked === void 0) { autoCorrectChecked = false; }
         if (autoCorrectDisabled === void 0) { autoCorrectDisabled = true; }
+        if (decoupleChildFromParent === void 0) { decoupleChildFromParent = false; }
         var _this = this;
         this.internalDisabled = false;
         this.internalChecked = true;
         this.internalCollapsed = false;
+        this.decoupleChildFromParent = decoupleChildFromParent;
         if (isNil(item)) {
             throw new Error('Item must be defined');
         }
@@ -111,7 +113,7 @@ var TreeviewItem = /** @class */ (function () {
                     throw new Error('Children must be not an empty array');
                 }
                 this.internalChildren = value;
-                if (!isNil(this.internalChildren)) {
+                if (!isNil(this.internalChildren) && !this.decoupleChildFromParent) {
                     var checked_1 = null;
                     this.internalChildren.forEach(function (child) {
                         if (checked_1 === null) {

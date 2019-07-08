@@ -15,9 +15,10 @@ export declare class TreeviewItem {
     private internalChecked;
     private internalCollapsed;
     private internalChildren;
+    private decoupleChildFromParent;
     text: string;
     value: any;
-    constructor(item: TreeItem, autoCorrectChecked?: boolean, autoCorrectDisabled?: boolean);
+    constructor(item: TreeItem, autoCorrectChecked?: boolean, autoCorrectDisabled?: boolean, decoupleChildFromParent?: boolean);
     checked: boolean;
     readonly indeterminate: boolean;
     setCheckedRecursive(value: boolean): void;
