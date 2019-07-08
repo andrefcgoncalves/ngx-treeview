@@ -26,6 +26,9 @@ export class TreeviewItemComponent {
     }
 
     onCheckedChange = () => {
+        if (this.item.disabled) {
+            return;
+        }
         const checked = this.item.checked;
         if (!isNil(this.item.children) && !this.config.decoupleChildFromParent) {
             this.item.children.forEach(child => child.setCheckedRecursive(checked));
