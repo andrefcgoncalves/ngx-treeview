@@ -20,10 +20,12 @@ export class TreeviewItem {
     private internalChecked = true;
     private internalCollapsed = false;
     private internalChildren: TreeviewItem[];
+    private decoupleChildFromParent: boolean;
     text: string;
     value: any;
 
-    constructor(item: TreeItem, autoCorrectChecked = false, autoCorrectDisabled = true) {
+    constructor(item: TreeItem, autoCorrectChecked = false, autoCorrectDisabled = true, decoupleChildFromParent = false) {
+        this.decoupleChildFromParent = decoupleChildFromParent;
         if (isNil(item)) {
             throw new Error('Item must be defined');
         }
@@ -122,7 +124,7 @@ export class TreeviewItem {
                 throw new Error('Children must be not an empty array');
             }
             this.internalChildren = value;
-            if (!isNil(this.internalChildren)) {
+            if (!isNil(this.internalChildren) && !this.decoupleChildFromParent) {
                 let checked = null;
                 this.internalChildren.forEach(child => {
                     if (checked === null) {
