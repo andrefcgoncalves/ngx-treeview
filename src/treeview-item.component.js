@@ -11,6 +11,9 @@ var TreeviewItemComponent = /** @class */ (function () {
             _this.item.collapsed = !_this.item.collapsed;
         };
         this.onCheckedChange = function () {
+            if (_this.item.disabled) {
+                return;
+            }
             var checked = _this.item.checked;
             if (!isNil(_this.item.children) && !_this.config.decoupleChildFromParent) {
                 _this.item.children.forEach(function (child) { return child.setCheckedRecursive(checked); });
